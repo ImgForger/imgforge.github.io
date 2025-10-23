@@ -4,6 +4,7 @@ const withMDX = createMDX();
 
 /** @type {import('next').NextConfig} */
 const config = {
+  basePath: '/',
   output: 'export',
   reactStrictMode: true,
   images: {
