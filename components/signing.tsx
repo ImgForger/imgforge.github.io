@@ -223,7 +223,7 @@ export default function SigningDemo() {
         </div>
         <button
           type="submit"
-          className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 disabled:cursor-not-allowed disabled:bg-blue-400"
+          className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 cursor-pointer disabled:cursor-not-allowed disabled:bg-blue-400"
           disabled={isSigning}
         >
           {isSigning ? 'Signing...' : 'Generate signed URL'}
@@ -235,11 +235,15 @@ export default function SigningDemo() {
       {signature ? (
         <div className="mt-6 space-y-2 rounded-md border border-slate-200 bg-slate-50 p-4 text-sm text-slate-800 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100">
           <div>
-            <p className="mb-1 font-medium text-slate-900 dark:text-slate-100">Signature</p>
+            <p className="mb-1 text-base font-semibold text-slate-900 dark:text-slate-100">
+              Signature
+            </p>
             <code className="break-all">{signature}</code>
           </div>
           <div>
-            <p className="mb-1 font-medium text-slate-900 dark:text-slate-100">Signed URL</p>
+            <p className="mb-1 text-base font-semibold text-slate-900 dark:text-slate-100">
+              Signed URL
+            </p>
             <code className="break-all">{signedUrl}</code>
           </div>
         </div>
