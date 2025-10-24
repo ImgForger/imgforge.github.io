@@ -66,12 +66,12 @@ async function signPath({
 
   const cryptoKey = await subtle.importKey(
     'raw',
-    keyBytes,
+    keyBytes.buffer as ArrayBuffer,
     { name: 'HMAC', hash: 'SHA-256' },
     false,
     ['sign'],
   );
-  const digest = await subtle.sign('HMAC', cryptoKey, payload);
+  const digest = await subtle.sign('HMAC', cryptoKey, payload.buffer as ArrayBuffer);
 
   return encodeBase64Url(new Uint8Array(digest));
 }
