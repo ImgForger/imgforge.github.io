@@ -2,6 +2,8 @@
 title: URL Structure & Signing
 ---
 
+import SigningDemo from '@/components/signing';
+
 imgforge mirrors the URL layout of imgproxy: every transformation is encoded inside the request path, and requests are authenticated via an HMAC signature. This document details the anatomy of those URLs, explains how to sign them, and highlights development shortcuts.
 
 ## Path anatomy
@@ -51,6 +53,12 @@ Signed URLs prevent tampering. Anyone with write access to a CDN, cache, or brow
 6. Prefix the signature to the path and send the request.
 
 The same steps apply for both `plain` and Base64 source segments. Rotate keys periodically and store them securely; leaking either value lets attackers craft arbitrary URLs.
+
+### Interactive demo
+
+Use the form below to experiment with different keys, salts, and paths. The output matches the signature algorithm that imgforge expects.
+
+<SigningDemo />
 
 ### Language examples
 
