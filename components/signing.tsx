@@ -246,6 +246,12 @@ export default function SigningDemo() {
             </p>
             <code className="break-all">{signedUrl}</code>
           </div>
+          <div>
+            <p className="mb-1 text-base font-semibold text-slate-900 dark:text-slate-100">
+              Example URL
+            </p>
+            <code className="break-all">https://image.example.com/{signedUrl}</code>
+          </div>
         </div>
       ) : null}
     </div>
