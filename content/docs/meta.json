@@ -7,6 +7,7 @@
         "4_url_structure",
         "5_processing_options",
         "6_request_lifecycle",
+        "7_caching",
         "8_error_troubleshooting",
         "9_performance",
         "11_prometheus_monitoring",
