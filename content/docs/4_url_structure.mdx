@@ -16,7 +16,7 @@ http(s)://<host>/<signature>/<processing_options>/<base64url-source>.<extension>
 | Segment                | Description                                                                                                                                 |
 |------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | `<signature>`          | Base64 URL-safe, unpadded HMAC-SHA256 digest generated from the path. Use `unsafe` when unsigned URLs are permitted.                        |
-| `<processing_options>` | Slash-separated list of directives (e.g., `resize:fill:800:600/quality:85`). See [Processing Options](5_processing_options.md).             |
+| `<processing_options>` | Slash-separated list of directives (e.g., `resize:fill:800:600/quality:85`). See [Processing Options](5_processing_options).             |
 | `plain/...`            | Indicates the source URL is provided in plain text (percent-encoded if needed) and may include `@<extension>` to declare the output format. |
 | `<base64url-source>`   | The source URL encoded using URL-safe Base64 without padding (`=`). The output extension, if specified, is appended after a dot.            |
 
@@ -131,6 +131,6 @@ Use this mode for development only; it bypasses HMAC validation entirely.
 
 ## Next steps
 
-- Explore available transformations in [Processing Options](5_processing_options.md).
-- Review the request lifecycle in [Request Lifecycle](6_request_lifecycle.md).
+- Explore available transformations in [Processing Options](5_processing_options).
+- Review the request lifecycle in [Request Lifecycle](6_request_lifecycle).
 - If your application generates many URLs, encapsulate signing logic into a shared helper library to avoid drift.

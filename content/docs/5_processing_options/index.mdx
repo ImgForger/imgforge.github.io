@@ -8,7 +8,7 @@ imgforge encodes image transformations directly in the URL path. Each directive 
 
 | Option               | Aliases   | Arguments                              | Purpose & defaults                                                                                      |
 |----------------------|-----------|----------------------------------------|---------------------------------------------------------------------------------------------------------|
-| `preset`             | `pr`      | `name`                                 | References a named preset defined via `IMGFORGE_PRESETS`. See [Configuration](3_configuration.md). |
+| `preset`             | `pr`      | `name`                                 | References a named preset defined via `IMGFORGE_PRESETS`. See [Configuration](3_configuration). |
 | `resize`             | `rs`      | `type:width:height[:enlarge][:extend]` | Primary resize control. Defaults to no resize. `enlarge`/`extend` default to `false`.                   |
 | `size`               | `sz`, `s` | `width:height[:enlarge][:extend]`      | Convenience wrapper for `resize` with implicit `fit`.                                                   |
 | `resizing_type`      | `rt`      | `type`                                 | Overrides the mode used by other resizing directives.                                                   |
@@ -70,7 +70,7 @@ Set `IMGFORGE_ONLY_PRESETS=true` to restrict URLs to preset references only. Non
 
 Both URL-safe base64 and `plain/` source references work with presets; choose whichever format fits your signing helper.
 
-See [Presets](5.2_presets.md) for comprehensive preset documentation including patterns, examples, and best practices. Configuration reference available in [Configuration](3_configuration.md).
+See [Presets](5.2_presets) for comprehensive preset documentation including patterns, examples, and best practices. Configuration reference available in [Configuration](3_configuration).
 
 ## Geometry & resizing
 
@@ -103,7 +103,7 @@ Controls the interpolation kernel used during resize operations. The algorithm a
 - **`lanczos2`** – Lanczos with a=2. Good quality with less processing than lanczos3. Suitable for most use cases.
 - **`lanczos3`** – **Default**. Lanczos with a=3. Highest quality interpolation with the sharpest results. Best for final output where quality matters.
 
-The algorithm applies to all resize operations including `resize`, `size`, `width`, `height`, `min_width`, `min_height`, `zoom`, and `pixelate`. It also affects watermark scaling. More deep dive into the algorithms can be found in [Resizing Algorithms](5.1_resizing_algorithms.md).
+The algorithm applies to all resize operations including `resize`, `size`, `width`, `height`, `min_width`, `min_height`, `zoom`, and `pixelate`. It also affects watermark scaling. More deep dive into the algorithms can be found in [Resizing Algorithms](5.1_resizing_algorithms).
 
 **Example:** `resizing_algorithm:cubic/resize:fit:800:600` uses bicubic interpolation for faster processing.
 
@@ -181,20 +181,20 @@ Listed earlier under geometry, but keep in mind it also affects the intensity of
 ## Watermarking
 
 1. Add `watermark:<opacity>:<position>` to enable overlay. Opacity ranges from `0.0` (invisible) to `1.0` (solid). Position accepts the same anchors as gravity (e.g., `south_east`).
-2. Supply the watermark image via `watermark_url:<base64url>` or configure `IMGFORGE_WATERMARK_PATH` on the server (see [Configuration](3_configuration.md) for details). When both are present, the URL value wins.
+2. Supply the watermark image via `watermark_url:<base64url>` or configure `IMGFORGE_WATERMARK_PATH` on the server (see [Configuration](3_configuration) for details). When both are present, the URL value wins.
 3. Watermarks render after resizing, padding, and effects. Oversized or missing watermark assets fail the request with `400 Bad Request`.
 
 ## Cache control & concurrency
 
-- `cache_buster:<token>` appends arbitrary data to the cache key. Change the token when you want to force reprocessing without altering transformations. See [Caching](7_caching.md) for more details on cache behavior.
+- `cache_buster:<token>` appends arbitrary data to the cache key. Change the token when you want to force reprocessing without altering transformations. See [Caching](7_caching) for more details on cache behavior.
 - `raw` bypasses the concurrency semaphore that ordinarily limits the number of simultaneous libvips jobs. Reserve it for high-priority tasks; uncontrolled usage can starve other requests.
 
 ## Security overrides
 
-`max_src_resolution` and `max_src_file_size` relax server-wide safeguards for a single request. They only take effect when `IMGFORGE_ALLOW_SECURITY_OPTIONS=true` is set (see [Configuration](3_configuration.md) for security settings). Use cautiously, preferably on trusted internal URLs.
+`max_src_resolution` and `max_src_file_size` relax server-wide safeguards for a single request. They only take effect when `IMGFORGE_ALLOW_SECURITY_OPTIONS=true` is set (see [Configuration](3_configuration) for security settings). Use cautiously, preferably on trusted internal URLs.
 
 ## Validation tips
 
-- Use the signing guidance in [URL Structure](4_url_structure.md) to confirm the encoded path matches the intended options.
-- Reference the lifecycle and processing order in [Request Lifecycle](6_request_lifecycle.md) and [Image Processing Pipeline](12_image_processing_pipeline.md) when debugging unexpected output.
+- Use the signing guidance in [URL Structure](4_url_structure) to confirm the encoded path matches the intended options.
+- Reference the lifecycle and processing order in [Request Lifecycle](6_request_lifecycle) and [Image Processing Pipeline](12_image_processing_pipeline) when debugging unexpected output.
 - Automate regression tests that call the processing endpoint with representative options to catch typos or changed defaults.
