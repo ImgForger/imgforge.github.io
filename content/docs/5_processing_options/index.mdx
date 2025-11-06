@@ -70,7 +70,7 @@ Set `IMGFORGE_ONLY_PRESETS=true` to restrict URLs to preset references only. Non
 
 Both URL-safe base64 and `plain/` source references work with presets; choose whichever format fits your signing helper.
 
-See [Presets](5.2_presets) for comprehensive preset documentation including patterns, examples, and best practices. Configuration reference available in [Configuration](3_configuration).
+See [Presets](5_processing_options/5.2_presets) for comprehensive preset documentation including patterns, examples, and best practices. Configuration reference available in [Configuration](3_configuration).
 
 ## Geometry & resizing
 
@@ -103,7 +103,7 @@ Controls the interpolation kernel used during resize operations. The algorithm a
 - **`lanczos2`** – Lanczos with a=2. Good quality with less processing than lanczos3. Suitable for most use cases.
 - **`lanczos3`** – **Default**. Lanczos with a=3. Highest quality interpolation with the sharpest results. Best for final output where quality matters.
 
-The algorithm applies to all resize operations including `resize`, `size`, `width`, `height`, `min_width`, `min_height`, `zoom`, and `pixelate`. It also affects watermark scaling. More deep dive into the algorithms can be found in [Resizing Algorithms](5.1_resizing_algorithms).
+The algorithm applies to all resize operations including `resize`, `size`, `width`, `height`, `min_width`, `min_height`, `zoom`, and `pixelate`. It also affects watermark scaling. More deep dive into the algorithms can be found in [Resizing Algorithms](5_processing_options/5.1_resizing_algorithms).
 
 **Example:** `resizing_algorithm:cubic/resize:fit:800:600` uses bicubic interpolation for faster processing.
 
