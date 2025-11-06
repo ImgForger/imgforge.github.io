@@ -10,6 +10,7 @@
         "7_caching",
         "8_error_troubleshooting",
         "9_performance",
+        "10_deployment",
         "11_prometheus_monitoring",
         "12_image_processing_pipeline"
     ]

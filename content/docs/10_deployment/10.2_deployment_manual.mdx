@@ -1,5 +1,5 @@
 ---
-title: Deployment
+title: Manual Deployment
 ---
 
 imgforge packages into a single static binary backed by libvips and Axum. This document covers container builds, systemd deployments, reverse proxy guidance, and security hardening. Read [Performance](9_performance.md) for tuning advice and [Caching](7_caching.md) for cache sizing before promoting to production.
@@ -25,7 +25,7 @@ docker run \
 
 If you need to customize the image (for example to bundle watermark assets, presets, or CA bundles), a multi-stage Dockerfile is included at the repository root. You can build a derivative image in CI or use the published image as a base:
 
-```Dockerfile
+```dockerfile
 FROM ghcr.io/imgforger/imgforge:latest
 # COPY your assets, CA bundles, or config templates
 ```
